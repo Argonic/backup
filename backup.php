@@ -42,7 +42,7 @@ function backup($project){
 	
 	$store = "backup/{$project}-backup";
 	file_put_contents($store,$string);
-	//unlink("{$project}-compress.zip");
+	unlink("{$project}-compress.zip");
 }
 function restore($project) {
 	global $key;
