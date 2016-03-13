@@ -34,7 +34,7 @@ function backup($project){
 		$iv .
 		mcrypt_encrypt(
 			MCRYPT_RIJNDAEL_128,
-			hash('sha256', $key, true),
+			hash('sha256', md5($key), true),
 			$string,
 			MCRYPT_MODE_CBC,
 			$iv
@@ -52,7 +52,7 @@ function restore($project) {
 
 	$decrypted = mcrypt_decrypt(
 		MCRYPT_RIJNDAEL_128,
-		hash('sha256', $key, true),
+		hash('sha256', md5($key), true),
 		substr($content, mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC)),
 		MCRYPT_MODE_CBC,
 		$iv
